@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💋 My Stylish Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* 背景與整體設定 */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f8b4d9, #c5b3ff);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* 按鈕設計 */
+    .link-btn {
+      display: block;
+      width: 220px;
+      margin: 10px auto;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    }
+
+    /* 流光效果 */
+    .link-btn::after {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      transition: 0.5s;
+    }
+
+    .link-btn:hover::after {
+      left: 100%;
+    }
+
+    /* 彈出 Rick Roll 視窗 */
+    #video-popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    iframe {
+      width: 90%;
+      max-width: 560px;
+      height: 315px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    #close-btn {
+      margin-top: 15px;
+      background: #ff77b7;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #close-btn:hover {
+      background: #ff9aca;
+    }
+
+    /* RWD */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.7rem; }
+      p { font-size: 1rem; }
+      .link-btn { width: 180px; padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💋 Hi, I'm <span style="font-weight:700;">Your Name</span></h1>
+  <p>美妝與時尚創作者｜讓風格閃耀 ✨</p>
+
+  <!-- 社群連結 -->
+  <a href="https://github.com/你的github帳號" class="link-btn" target="_blank">GitHub</a>
+  <a href="mailto:你的email@example.com" class="link-btn">Email</a>
+  <a href="https://linkedin.com/in/你的linkedin" class="link-btn" target="_blank">LinkedIn</a>
+  <a href="https://instagram.com/你的IG帳號" class="link-btn" target="_blank">Instagram</a>
+
+  <!-- Rick Roll 按鈕 -->
+  <button id="rickroll-btn" class="link-btn">✨ Surprise ✨</button>
+
+  <!-- 彈出視窗 -->
+  <div id="video-popup">
+    <iframe id="rickroll-video" src="" allowfullscreen></iframe>
+    <button id="close-btn">關閉</button>
+  </div>
+
+  <script>
+    const rickBtn = document.getElementById('rickroll-btn');
+    const popup = document.getElementById('video-popup');
+    const video = document.getElementById('rickroll-video');
+    const closeBtn = document.getElementById('close-btn');
+
+    rickBtn.addEventListener('click', () => {
+      popup.style.display = 'flex';
+      video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+    });
+
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+      video.src = "";
+    });
+  </script>
+</body>
+</html>
